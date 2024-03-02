@@ -40,4 +40,6 @@ public class Cursos {
     public int getCargaHoraria() {
         return cargaHoraria;
     }
+
+    // Verificar necessidade do toString
 }
