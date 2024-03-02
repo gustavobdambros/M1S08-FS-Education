@@ -4,10 +4,8 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Data
-public class AlunoModel {
+public class CursoModel {
 
     // Início da contagem de ID's
     private static Integer proximoId = 1;
@@ -15,7 +13,8 @@ public class AlunoModel {
     // Atributos
     @Setter(AccessLevel.NONE) private Integer id;
     private String nome;
-    private LocalDate dataNascimento;
+    private String descricao;
+    private Integer cargaHoraria;
 
     // Método estático para controlar a sequência de ID's
     private Integer getProximoId(){
