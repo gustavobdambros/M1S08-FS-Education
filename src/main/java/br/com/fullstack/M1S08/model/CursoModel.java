@@ -16,7 +16,7 @@ public class CursoModel {
     private String descricao;
     private Integer cargaHoraria;
 
-    // Método estático para controlar a sequência de ID's
+    // Método para controlar a sequência de ID's
     private Integer getProximoId(){
         return proximoId++;
     }
