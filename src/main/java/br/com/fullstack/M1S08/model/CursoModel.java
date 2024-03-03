@@ -11,18 +11,16 @@ import java.util.List;
 @Data
 public class CursoModel {
 
-    // Início da contagem de ID's
     private static Integer proximoId = 1;
     @Getter private static List<CursoModel> cursos = new ArrayList<>();
 
-    // Atributos
     @Setter(AccessLevel.NONE) private Integer id;
     private String nome;
     private String descricao;
     private Integer cargaHoraria;
+    private List<AlunoModel> alunosMatriculados = new ArrayList<>();
 
-    // Método para controlar a sequência de ID's
-    private static Integer getProximoId(){
+    private static Integer getProximoId() {
         return proximoId++;
     }
 
@@ -31,4 +29,18 @@ public class CursoModel {
         cursos.add(curso);
         return curso;
     }
+
+    public static CursoModel buscarPorId(Integer id) throws Exception {
+        for (CursoModel curso : cursos) {
+            if (curso.getId().equals(id)) {
+                return curso;
+            }
+        }
+        throw new Exception("Curso não encontrado");
+    }
+
+    public static void matricular(CursoModel curso, AlunoModel aluno){
+        curso.getAlunosMatriculados().add(aluno);
+    }
+
 }

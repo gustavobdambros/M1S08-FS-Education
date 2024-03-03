@@ -2,6 +2,7 @@ package br.com.fullstack.M1S08.service;
 
 import br.com.fullstack.M1S08.model.AlunoModel;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -12,17 +13,19 @@ public class AlunoService {
         return AlunoModel.getAlunos();
     }
 
+    public AlunoModel buscarPorId(Integer id) throws Exception {
+        return AlunoModel.buscarPorId(id);
+    }
+
     public AlunoModel salvar(AlunoModel aluno) throws Exception {
-        if(validar(aluno)) {
+        if (validar(aluno)) {
             return AlunoModel.inserir(aluno);
         }
         return null;
     }
 
     private boolean validar(AlunoModel aluno) throws Exception {
-        //TODO testar o isBlank
-        //if(aluno.getNome() == null || aluno.getNome().isBlank()){
-        if(aluno.getNome().isBlank()){
+        if (!StringUtils.hasText(aluno.getNome())) {
             throw new Exception("Nome é obrigatório!");
         }
 
@@ -32,4 +35,5 @@ public class AlunoService {
 
         return true;
     }
+
 }
